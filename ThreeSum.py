@@ -12,7 +12,6 @@ def sum_three(nums):
                         if i != k and j != k and x[i] + x[j] + x[k] == 0:
                             tab.append([x[i], x[j], x[k]])
             res = list(set(tuple(sorted(sub)) for sub in tab))
-
     return res
 
 
