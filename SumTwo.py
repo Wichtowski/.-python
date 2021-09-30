@@ -1,5 +1,5 @@
 import random
-def sumTwo(nums):  
+def sum_two(nums):  
     for i in range(len(nums)-1):
         for j in range(i+1, len(nums)):
             if nums[i] + nums[j] == target:
@@ -11,4 +11,4 @@ for num in range(len_number):
     num = random.randint(-11, 11)
     nums.append(num)
 print(f"Numbers: {nums} and target {target}")
-print(f"Solution: {sumTwo(nums)}")
+print(f"Solution: {sum_two(nums)}")
