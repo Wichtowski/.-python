@@ -8,13 +8,11 @@ def game_start():
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     player_cards = []
     computer_cards = []
-    knowledge_of_cards_computer = cards
     for user in range(0, 2):
         index_of_dawn_card = random.randint(0, len(cards) - 1)
         player_cards.append(cards[index_of_dawn_card])
         index_of_dawn_card = random.randint(0, len(cards) - 1)
         computer_cards.append(cards[index_of_dawn_card])
-        knowledge_of_cards_computer.pop(index_of_dawn_card)
     print(f"Your cards: {player_cards}")
     if cheat:
         print(f"Computer cards: {computer_cards}\n")
@@ -48,17 +46,6 @@ def who_won(sum_of_computers_cards, sum_of_player_cards):
 
 
 def draw_computer_cards(sum_of_computers_cards, computer_cards, cards):
-    if 11 in computer_cards:
-        if sum_of_computers_cards > 21:
-            j = computer_cards.indexOf(11)
-            computer_cards[j] = 1
-        else:
-            pass
-    else:
-        pass
-    is_best_hand = True
-    while not is_best_hand:
-        is_best_hand = False
     if sum_of_computers_cards <= 19:
         gamble = random.randint(0, 1)
         if gamble == 0:
@@ -72,7 +59,15 @@ def draw_computer_cards(sum_of_computers_cards, computer_cards, cards):
         computer_cards.append(cards[index_of_dawn_card])
     else:
         pass
-
+    if 11 in computer_cards:
+        if sum_of_computers_cards > 21:
+            j = computer_cards.indexOf(11)
+            computer_cards[j] = 1
+        else:
+            pass
+    else:
+        pass
+    
 
 def draw_players_cards(player_cards, cards):
     if 11 in player_cards:
