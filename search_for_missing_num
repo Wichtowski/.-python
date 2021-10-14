@@ -1,0 +1,22 @@
+import random
+
+
+def miss_num(nums):
+    tmp = 0
+    for i in range(0, len(nums)):
+        if i == nums[i]:
+            tmp += 1
+            if len(nums) == tmp:
+                return i + 1
+        else:
+            return i
+
+
+z = random.randint(0, 30)
+nums = []
+for i in range(0, z):
+    nums.append(i)
+nums.pop(random.randint(0, len(nums) - 1))
+nums.sort()
+print(nums)
+print(f"The missing number is : {miss_num(nums)}")
