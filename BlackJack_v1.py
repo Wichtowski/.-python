@@ -2,8 +2,18 @@ import random
 
 
 def game_start():
-    from logo import logo
-    cheat = bool(input("Type '1' to enable cheats: "))
+    logo = """
+    .------.            _     _            _    _            _    
+    |A_  _ |.          | |   | |          | |  (_)          | |   
+    |( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+    | \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+    |  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   < 
+    `-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+          |  \/ K|                            _/ |                
+          `------'                           |__/           
+    """
+
+    cheat = int(input("Type '1' to enable cheats: "))
     print(logo)
     cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
     player_cards = []
@@ -14,15 +24,16 @@ def game_start():
         index_of_dawn_card = random.randint(0, len(cards) - 1)
         computer_cards.append(cards[index_of_dawn_card])
     print(f"Your cards: {player_cards}")
-    if cheat:
+    sum_of_computers_cards = sum(computer_cards)
+    if cheat == 1:
+        draw_computer_cards(sum_of_computers_cards, computer_cards, cards)
         print(f"Computer cards: {computer_cards}\n")
     else:
         pass
-    sum_of_computers_cards = sum(computer_cards)
-    draw_computer_cards(sum_of_computers_cards, computer_cards, cards)
     draw_players_cards(player_cards, cards)
     sum_of_player_cards = sum(player_cards)
     result = who_won(sum_of_computers_cards, sum_of_player_cards)
+
     return result
 
 
@@ -48,10 +59,10 @@ def who_won(sum_of_computers_cards, sum_of_player_cards):
 def draw_computer_cards(sum_of_computers_cards, computer_cards, cards):
     if sum_of_computers_cards <= 19:
         gamble = random.randint(0, 1)
-        if gamble == 0:
+        if gamble == 0 or sum_of_computers_cards <= 14:
             index_of_dawn_card = random.randint(0, len(cards) - 1)
             computer_cards.append(cards[index_of_dawn_card])
-            print(f"{computer_cards}")
+
         else:
             pass
     elif 9 >= sum_of_computers_cards <= 17:
@@ -67,7 +78,7 @@ def draw_computer_cards(sum_of_computers_cards, computer_cards, cards):
             pass
     else:
         pass
-    
+
 
 def draw_players_cards(player_cards, cards):
     if 11 in player_cards:
