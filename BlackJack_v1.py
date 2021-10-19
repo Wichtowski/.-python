@@ -57,8 +57,8 @@ def who_won(sum_of_computers_cards, sum_of_player_cards):
 
 
 def draw_computer_cards(sum_of_computers_cards, computer_cards, cards):
-    if sum_of_computers_cards <= 19:
-        gamble = random.randint(0, 1)
+    if 17 >= sum_of_computers_cards <= 19:
+        gamble = random.randint(0, 6)
         if gamble == 0 or sum_of_computers_cards <= 14:
             index_of_dawn_card = random.randint(0, len(cards) - 1)
             computer_cards.append(cards[index_of_dawn_card])
